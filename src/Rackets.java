@@ -60,9 +60,9 @@ public class Rackets {
 		}
 	}
 
-	void run(Target target, ArrayList<Obstacle> obstacles, int populationSize) {
+	void run(Target target, ArrayList<Obstacle> obstacles, int populationSize, ArrayList<Portal> portals) {
 		for (int i = 0; i < populationSize; i++) {
-			this.rackets.get(i).update(target, obstacles);
+			this.rackets.get(i).update(target, obstacles, portals);
 			this.rackets.get(i).show();
 		}
 	}
@@ -70,7 +70,8 @@ public class Rackets {
 	public ArrayList<Racket> getMatingPool() {
 		return matingPool;
 	}
-	public ArrayList<Racket> getRackets(){
+
+	public ArrayList<Racket> getRackets() {
 		return rackets;
 	}
 

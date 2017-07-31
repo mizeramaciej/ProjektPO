@@ -1,29 +1,31 @@
 import processing.core.*;
 
-public class Obstacle {
+public class Obstacle implements Displayable {
 
 	private float x;
 	private float h;
 	private float y;
 	private float w;
 	PApplet p;
+	PImage texture;
 
 	public Obstacle(float x, float y, float oWidth, float oHeight, PApplet parent) {
 		p = parent;
-		
-		if(oWidth<0){
-			oWidth=Math.abs(oWidth);
-			x=x-oWidth;	
+
+		if (oWidth < 0) {
+			oWidth = Math.abs(oWidth);
+			x = x - oWidth;
 		}
-		if(oHeight<0){
-			oHeight=Math.abs(oHeight);
-			y=y-oHeight;
+		if (oHeight < 0) {
+			oHeight = Math.abs(oHeight);
+			y = y - oHeight;
 		}
-		
+
 		this.x = x;
 		this.w = oWidth;
 		this.h = oHeight;
 		this.y = y;
+		texture = p.loadImage("obstacletexture2.jpg");
 	}
 
 	boolean ifHit(PVector position) {
@@ -35,9 +37,13 @@ public class Obstacle {
 		// position.y && this.y + h > position.y
 	}
 
-	void show() {
-		p.fill(15);
-		p.rect(x, y, w, h);
+	public void show() {
+		// p.fill(115,65,7);
+		// p.rect(x, y, w, h);
+		if (w > 0 && h > 0) {
+			texture.resize((int) Math.ceil(w), (int) Math.ceil(h));
+			p.image(texture, x, y);
+		}
 	}
 
 }

@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Target {
+public class Target implements Displayable {
 	private PVector position;
 	private int radious;
 	private PApplet p;
@@ -16,7 +16,7 @@ public class Target {
 		p.fill(250, 10, 10);
 		p.ellipse(position.x, position.y, radious, radious); // target
 		p.fill(255);
-		p.ellipse(position.x, position.y, (float)(radious / 1.5), (float)(radious / 1.5)); // target
+		p.ellipse(position.x, position.y, (float) (radious / 1.5), (float) (radious / 1.5)); // target
 		p.fill(250, 10, 10);
 		p.ellipse(position.x, position.y, radious / 3, radious / 3); // target
 	}
